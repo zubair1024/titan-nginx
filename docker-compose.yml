@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  nginx:
+    hostname: nginx
+    container_name: "titan-nginx"
+    image: "nginx:latest"
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+    volumes:
+      - "./conf:/etc/nginx/conf.d/:ro"
+      - "./logs:/var/log/nginx:rw"
+      - ./www:/var/www/certbot/:ro
+      - ./ssl/:/etc/nginx/ssl/:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    restart: "always"

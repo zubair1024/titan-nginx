@@ -1,0 +1,7 @@
+DS_Stores
+
+logs/*.log
+.env
+
+ssl/*
+!ssl/readme.md
